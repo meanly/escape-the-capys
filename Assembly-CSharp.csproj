@@ -62,11 +62,15 @@
   <ItemGroup>
     <Compile Include="Assets\Code\Projectile.cs" />
     <Compile Include="Assets\Code\EnemyCollision.cs" />
+    <Compile Include="Assets\Code\Health\Healthbar.cs" />
     <Compile Include="Assets\Code\EnemyPatrol.cs" />
+    <Compile Include="Assets\Code\Enemy_Sideways.cs" />
     <Compile Include="Assets\Code\CameraFollow.cs" />
     <Compile Include="Assets\Code\CollisionControllerPractice.cs" />
     <Compile Include="Assets\Code\PlayerMovement.cs" />
     <Compile Include="Assets\Code\WinCollision.cs" />
+    <Compile Include="Assets\Code\Health\HealthCollectible.cs" />
+    <Compile Include="Assets\Code\Health\Health.cs" />
     <Compile Include="Assets\Code\PlayerAttack.cs" />
   </ItemGroup>
   <ItemGroup>
