@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private float horizontalInput;
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+    private bool jumpSoundPlayed = false;
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -60,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");
+            if (!jumpSoundPlayed)
+            {
+                PlayJumpSound();
+                jumpSoundPlayed = true; // Set to true after playing the sound
+            }
         }
         else if (onWall() && !isGrounded())
         {
@@ -72,9 +81,29 @@ public class PlayerMovement : MonoBehaviour
                 body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
 
             wallJumpCooldown = 0;
+            if (!jumpSoundPlayed)
+            {
+                PlayJumpSound();
+                jumpSoundPlayed = true; // Set to true after playing the sound
+            }
+        }
+    }
+    private void FixedUpdate()
+    {
+        // Reset the jump sound flag when grounded
+        if (isGrounded())
+        {
+            jumpSoundPlayed = false;
         }
     }
 
+    private void PlayJumpSound()
+    {
+        if (audioSource != null && jumpSound != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
+    }
 
     private bool isGrounded()
     {
