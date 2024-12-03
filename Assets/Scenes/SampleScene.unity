@@ -1259,7 +1259,7 @@ MonoBehaviour:
   - {fileID: 717723233}
   - {fileID: 792237370}
   - {fileID: 1632543937}
-  fireballSound: {fileID: 8300000, guid: 7d388aca7edea294394aa4228873ee17, type: 3}
+  fireballSound: {fileID: 8300000, guid: b550bc9ae73880343b5ca51d82888785, type: 3}
 --- !u!61 &91101252
 BoxCollider2D:
   m_ObjectHideFlags: 0
