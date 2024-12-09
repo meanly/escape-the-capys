@@ -18,13 +18,19 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip hurtSound;
 
+    [Header("UI")]
+    [SerializeField] private GameObject deathScreen; // Reference to the death screen Canvas
 
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+
+        if (deathScreen != null)
+            deathScreen.SetActive(false); // Ensure the death screen is hidden at the start
     }
+
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
@@ -44,13 +50,16 @@ public class Health : MonoBehaviour
                 GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
                 SoundManager.instance.PlaySound(deathSound);
+                ShowDeathScreen();
             }
         }
     }
+
     public void AddHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
+
     private IEnumerator Invunerability()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
@@ -62,5 +71,30 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
+    }
+
+    private void ShowDeathScreen()
+    {
+        if (deathScreen != null)
+        {
+            deathScreen.SetActive(true); // Show the death screen
+            StartCoroutine(Respawn());
+        }
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+        deathScreen.SetActive(false); // Hide the death screen
+        RespawnPlayer();
+    }
+
+    private void RespawnPlayer()
+    {
+        currentHealth = startingHealth; // Reset health
+        dead = false;
+        anim.SetTrigger("respawn"); // Optional: trigger respawn animation
+        GetComponent<PlayerMovement>().enabled = true; // Re-enable player movement
+        transform.position = Vector3.zero; // Example: Respawn at the origin (adjust as needed)
     }
 }
