@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Enemy
   - EnemyPoint
+  - Text
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Wall
   - Player
   - Enemy
-  - 
+  - Text
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1571611759
+    locked: 0
+  - name: Text
+    uniqueID: 3945409301
     locked: 0
   - name: Foreground
     uniqueID: 2523540245

@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 
-public class WinCollision : MonoBehaviour
+public class EndGameCollision : MonoBehaviour
 {
     public GameObject VictoryScreenParent; // Reference to the parent GameObject containing VictoryScreen
-    public Text gameOverText;             // Reference to the Game Over text element
     public AudioSource audioSource;       // Audio source for playing sounds
-    public AudioClip VictorySFX;          // Audio clip for the victory sound
+    public AudioClip gameOverClip;        // Audio clip for the victory sound
+    public float reloadDelay = 5f;        // Time to wait before reloading the scene
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,9 +23,9 @@ public class WinCollision : MonoBehaviour
             // Enable the VictoryScreen parent object
             EnableVictoryScreen();
 
-            // Start a coroutine to delay scene transition
-            StartCoroutine(DelaySceneTransition());
-        }
+            // Reload the scene after a delay
+            Invoke("ReloadScene", reloadDelay);
+        }   
     }
 
     void EnableVictoryScreen()
@@ -36,27 +35,19 @@ public class WinCollision : MonoBehaviour
         {
             VictoryScreenParent.SetActive(true);
         }
-
-        // Update the victory text if needed
-        if (gameOverText != null)
-        {
-            gameOverText.text = "Victory!";
-            gameOverText.gameObject.SetActive(true);
-        }
     }
 
     void PlayGameOverSound()
     {
-        if (audioSource != null && VictorySFX != null)
+        if (audioSource != null && gameOverClip != null)
         {
-            audioSource.clip = VictorySFX;
+            audioSource.clip = gameOverClip;
             audioSource.Play();
         }
     }
 
-    private IEnumerator DelaySceneTransition()
+    void ReloadScene()
     {
-        yield return new WaitForSeconds(5f); // Wait for 5 seconds
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Load the next scene
+        SceneManager.LoadScene(0); // Reload Scene 0
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement; // Required for scene management
 
 public class Health : MonoBehaviour
 {
@@ -78,23 +79,13 @@ public class Health : MonoBehaviour
         if (deathScreen != null)
         {
             deathScreen.SetActive(true); // Show the death screen
-            StartCoroutine(Respawn());
+            StartCoroutine(ReloadScene()); // Replace respawn with scene reload
         }
     }
 
-    private IEnumerator Respawn()
+    private IEnumerator ReloadScene()
     {
         yield return new WaitForSeconds(3f); // Wait for 3 seconds
-        deathScreen.SetActive(false); // Hide the death screen
-        RespawnPlayer();
-    }
-
-    private void RespawnPlayer()
-    {
-        currentHealth = startingHealth; // Reset health
-        dead = false;
-        anim.SetTrigger("respawn"); // Optional: trigger respawn animation
-        GetComponent<PlayerMovement>().enabled = true; // Re-enable player movement
-        transform.position = Vector3.zero; // Example: Respawn at the origin (adjust as needed)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
     }
 }

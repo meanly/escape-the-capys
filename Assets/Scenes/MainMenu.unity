@@ -1907,8 +1907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -360.51, y: 232.8}
-  m_SizeDelta: {x: 436.4932, y: 207.9813}
+  m_AnchoredPosition: {x: -360.51, y: 238}
+  m_SizeDelta: {x: 450.7804, y: 189.1853}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090316149
 MonoBehaviour:
@@ -1932,27 +1932,34 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Escape the Capy - Version 1.0
 
+    This game is for educational purposes.
 
-    This game is for educational purposes
-    only.
+    W
+    & D - Movement
+
+    Space - Jump
+
+    Left-Click - Attack
 
 
     Created by: meanly.dev
 
-    Main Menu BG: Sofia Ritter
+    Main
+    Menu BG: Sofia Ritter
 
-    Wooden
-    GUI: Black Hammer
+    Wooden GUI: Black Hammer
 
     Capybara Sprite: Meanly
 
-    Parallax Field: codecrackers
+    Parallax
+    Field: codecrackers
 
-    Pixel
-    Adventure: Pixel Frog
+    Pixel Adventure: Pixel Frog
 
+    Up in my Jam: Kubbi
 
-    Pokemon - Littleroot Town
+    Pokemon
+    - Littleroot Town
 
     SFX - Pandemonium'
   m_isRightToLeft: 0
@@ -1981,8 +1988,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

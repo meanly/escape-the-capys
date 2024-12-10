@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\Enemies\ArrowTrap.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyCollision.cs" />
+    <Compile Include="Assets\Scripts\Core\EndGameCollision.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\Player\Projectile.cs" />
     <Compile Include="Assets\Scripts\Enemies\Firetrap.cs" />
