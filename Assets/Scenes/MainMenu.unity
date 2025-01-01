@@ -1930,9 +1930,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Escape the Capy - Version 1.0
+  m_text: 'Escape the Capys - Version 1.0
 
-    This game is for educational purposes.
+    https://meanly.itch.io/escape-the-capys
 
     W
     & D - Movement
@@ -2694,7 +2694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1628365270
 RectTransform:
   m_ObjectHideFlags: 0
